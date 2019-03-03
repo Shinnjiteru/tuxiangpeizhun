@@ -1,0 +1,11 @@
+clear;  
+I = imread('Image A.jpg');%‘≠ÕºI,Q  
+J = imread('Image B.jpg');%¥˝∆•≈‰J,P  
+J1=imresize(J,[2736,3648],'bicubic');  
+cpselect(J1,I)  
+P1=[P0';ones(1,7)];  
+Q1=[Q0';ones(1,7)];  
+H=Q1*(P1.')*inv((Q1*Q1.'))  
+tform=cp2tform(P0,Q0,'affine');  
+J_out = imtransform(J1,tform);  
+imshowpair(J_out, I,'falsecolor');
